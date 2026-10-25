@@ -231,7 +231,7 @@ body.challenge-open{overflow:hidden!important}
 @media(max-width:720px){body.in-quiz .challenge-quick{width:30px;height:30px;font-size:15px;border-radius:7px}body.in-quiz .challenge-modal{height:var(--quiz-viewport,100dvh)}body.in-quiz .challenge-toast{font-size:12px;padding:9px 12px}}
 @media(max-width:350px){.badge-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style></head><body>
-<header><div class="topbrand"><div aria-hidden="true" class="brandicon">📘</div><div><h1>機械保全技能検定｜実技 写真暗記</h1><p>級・分野・回答モードを選んで練習</p></div></div><button aria-label="工場・バッジを見る" class="challenge-quick" id="challengeQuick" title="工場・バッジを見る" type="button">🏭</button><button class="top-home" id="topHome" type="button">⌂ ホーム</button></header>
+<header><div class="topbrand"><div aria-hidden="true" class="brandicon">📘</div><div><h1>機械保全技能検定｜実技 写真暗記</h1><p>級・分野・回答モードを選んで練習</p></div></div><button aria-label="工作機械・バッジを見る" class="challenge-quick" id="challengeQuick" title="工作機械・バッジを見る" type="button">⚙️</button><button class="top-home" id="topHome" type="button">⌂ ホーム</button></header>
 <main>
 <section aria-label="ホーム画面" class="view" id="homeView">
 <div class="home-layout">
@@ -248,14 +248,14 @@ body.challenge-open{overflow:hidden!important}
 </div>
 <aside aria-label="累積学習記録" class="panel stats-panel">
 <section aria-label="チャレンジモード" class="challenge-home">
-<div class="challenge-label">🏭 チャレンジモード <span id="factoryMiniLevel">Lv.1</span></div>
+<div class="challenge-label">⚙️ 工作機械チャレンジ <span id="factoryMiniLevel">Lv.1</span></div>
 <div class="challenge-home-grid">
 <div><b id="challengeCorrect">0</b><small>累計正解</small></div>
 <div><b id="challengeStreak">0</b><small>連続正解</small></div>
 <div><b id="challengeBadges">0 / 26</b><small>獲得バッジ</small></div>
 <div><b id="challengeLeft">あと10問</b><small>次の進化</small></div>
 </div>
-<button class="open-challenge" id="openChallengeHome" type="button">🏭 工場・バッジを見る <span aria-hidden="true">›</span></button>
+<button class="open-challenge" id="openChallengeHome" type="button">⚙️ 工作機械・バッジを見る <span aria-hidden="true">›</span></button>
 </section><h3 class="panel-title">🏆 あなたの学習記録</h3>
 <div class="stats-head"><b>正解を積み重ねよう！</b><span id="levelLabel">チャレンジ 1</span></div>
 <div class="total-correct"><span id="correctTotal">0</span><small>問 正解</small></div>
@@ -279,18 +279,18 @@ body.challenge-open{overflow:hidden!important}
 <div aria-labelledby="challengeTitle" aria-modal="true" class="challenge-modal" hidden="" id="challengeModal" role="dialog">
 <div class="challenge-shade" id="challengeShade"></div>
 <div class="challenge-dialog">
-<div class="challenge-dialog-head"><div><small>LEARNING FACTORY</small><h2 id="challengeTitle">🏭 マイ工場</h2></div><button aria-label="閉じる" class="challenge-close" id="challengeClose" type="button">✕</button></div>
+<div class="challenge-dialog-head"><div><small>ULTIMATE MACHINE PROJECT</small><h2 id="challengeTitle">⚙️ マイ工作機械</h2></div><button aria-label="閉じる" class="challenge-close" id="challengeClose" type="button">✕</button></div>
 <div aria-label="チャレンジ詳細" class="challenge-tabs" role="tablist">
-<button aria-controls="factoryPanel" aria-selected="true" class="active" id="factoryTab" role="tab" type="button">🏭 工場</button>
+<button aria-controls="factoryPanel" aria-selected="true" class="active" id="factoryTab" role="tab" type="button">⚙️ 工作機械</button>
 <button aria-controls="badgePanel" aria-selected="false" id="badgeTab" role="tab" type="button">🏅 バッジ</button>
 </div>
 <section aria-labelledby="factoryTab" id="factoryPanel" role="tabpanel">
-<div class="factory-summary"><span id="factoryLevel">Lv.1</span><div><h3 id="factoryName">小さな作業場</h3><p id="factoryDescription">ここから工場を育てよう！</p></div></div>
-<div aria-label="累計正解数に応じて設備が増える工場イラスト" class="factory-canvas" id="factoryCanvas"></div>
+<div class="factory-summary"><span id="factoryLevel">Lv.1</span><div><h3 id="factoryName">小さな作業場</h3><p id="factoryDescription">ここから1台の工作機械を組み上げよう！</p></div></div>
+<div aria-label="累計正解数に応じて組み上がる工作機械のイラスト" class="factory-canvas" id="factoryCanvas"></div>
 <div class="factory-numbers"><strong>累計 <span id="factoryTotal">0</span>問正解</strong><span id="factoryNextText">次の進化まであと10問</span></div>
 <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="factory-progress-track" id="factoryProgress" role="progressbar"><div id="factoryProgressFill"></div></div>
 <p class="factory-high">🔥 最高連続正解：<b id="factoryBest">0</b>問</p>
-<h4>工場の成長履歴</h4><div class="factory-timeline" id="factoryTimeline"></div>
+<h4>工作機械の組立・進化履歴</h4><div class="factory-timeline" id="factoryTimeline"></div>
 </section>
 <section aria-labelledby="badgeTab" hidden="" id="badgePanel" role="tabpanel">
 <div class="badge-count-head">🏅 獲得 <b id="badgeCount">0</b> / 26種類　<span>タップで条件と進捗を確認</span></div>
@@ -396,18 +396,18 @@ const Challenge=(()=>{
   'use strict';
   const KEY='hozen_photoquiz_challenge_v14';
   const STAGES=[
-    {n:0,name:'小さな作業場',icon:'🧰',desc:'最初の設備から学び始めよう'},
-    {n:10,name:'工具ステーション設置',icon:'🔧',desc:'道具が増えて整備がはかどる！'},
-    {n:50,name:'旋盤導入',icon:'⚙️',desc:'加工の幅が広がった！'},
-    {n:100,name:'1号機稼働',icon:'🏗️',desc:'本格的な製造がスタート'},
-    {n:200,name:'搬送ライン増設',icon:'📦',desc:'生産ラインがつながった'},
-    {n:300,name:'制御盤導入',icon:'🎛️',desc:'工場の自動制御を強化'},
-    {n:500,name:'産業用ロボット導入',icon:'🦾',desc:'ロボットが生産をサポート'},
-    {n:1000,name:'スマートファクトリー完成',icon:'💠',desc:'設備がネットワークで連携'},
-    {n:2000,name:'世界水準の工場へ進化',icon:'🌐',desc:'世界水準の保全工場が完成！'}
+    {n:0,name:'ベッド据付',icon:'🧱',desc:'工作機械の土台が完成。ここから1台を組み上げよう！'},
+    {n:10,name:'コラム・ガイド設置',icon:'🏗️',desc:'高剛性コラムと案内面を組み付けた！'},
+    {n:50,name:'送り軸・テーブル完成',icon:'⚙️',desc:'精密な送り機構と加工テーブルを搭載！'},
+    {n:100,name:'主軸ユニット搭載',icon:'🔩',desc:'主軸が組み上がり、切削加工の準備が整った！'},
+    {n:200,name:'ATC・工具マガジン搭載',icon:'🛠️',desc:'自動工具交換に対応した！'},
+    {n:300,name:'CNC制御システム起動',icon:'🎛️',desc:'制御盤と操作パネルが稼働開始！'},
+    {n:500,name:'パレットチェンジャ増設',icon:'📦',desc:'段取り替えを効率化し、生産性アップ！'},
+    {n:1000,name:'5軸・高精度化',icon:'🎯',desc:'傾斜回転テーブルと計測システムを搭載！'},
+    {n:2000,name:'最強の工作機械 完成！',icon:'👑',desc:'究極の5軸マシニングセンタがついに完成！'}
   ];
   const badges=[
-    ['correct','累積正解','first','初めての正解','🌱',1],['correct','累積正解','start','始動','⚡',10],['correct','累積正解','machine','機械の仲間','🔩',50],['correct','累積正解','hundred','百戦錬磨','💪',100],['correct','累積正解','equipment','設備の達人','⚙️',300],['correct','累積正解','master','保全マスター','🛠️',500],['correct','累積正解','legend','伝説の保全士','👑',1000],['correct','累積正解','guardian','工場の守護神','🏰',2000],
+    ['correct','累積正解','first','初めての正解','🌱',1],['correct','累積正解','start','始動','⚡',10],['correct','累積正解','machine','機械の仲間','🔩',50],['correct','累積正解','hundred','百戦錬磨','💪',100],['correct','累積正解','equipment','設備の達人','⚙️',300],['correct','累積正解','master','保全マスター','🛠️',500],['correct','累積正解','legend','伝説の保全士','👑',1000],['correct','累積正解','guardian','最強マシンの守護者','🏰',2000],
     ['streak','連続正解','streak3','3連続！','✨',3],['streak','連続正解','streak5','波に乗った！','🌊',5],['streak','連続正解','streak10','集中力抜群','🎯',10],['streak','連続正解','streak20','ノーミス職人','🥇',20],['streak','連続正解','streak30','精密マスター','🔬',30],['streak','連続正解','streak50','完全無欠','💎',50],
     ['answered','学習継続','answers50','コツコツ点検','🧹',50],['answered','学習継続','answers200','毎日の積み重ね','🗓️',200],['answered','学習継続','answers500','努力の結晶','🏆',500],
     ['unique','知識の広がり','unique20','知識を開拓','🧭',20],['unique','知識の広がり','unique100','知識の百科事典','📖',100],['unique','知識の広がり','unique300','全方位の知識','🌟',300],
@@ -451,38 +451,123 @@ const Challenge=(()=>{
     const was=new Set(state.badges);syncBadges();
     state.lastUpdated=Date.now();safeSave();setSummary();
     const note=[];let nextIndex=stageIndex();
-    if(nextIndex>oldIndex)note.push('🏭 工場が進化！ '+STAGES[nextIndex].name+'！');
+    if(nextIndex>oldIndex)note.push('⚙️ 工作機械が進化！ '+STAGES[nextIndex].name+'！');
     const fresh=badges.filter(b=>state.badges.includes(b.id)&&!was.has(b.id));
     if(fresh.length)note.push('🏅 バッジ獲得！ '+fresh.map(b=>b.name).join('・'));
     toast(note);
   }
   function createFactorySVG(){
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 375" role="img" aria-label="成長していく工場。工具、旋盤、加工機、搬送ライン、制御盤、ロボットなどが正解に応じて追加されます">
-     <defs><linearGradient id="skyGrad" x2="0" y2="1"><stop stop-color="#deefff"/><stop offset="1" stop-color="#f4fbff"/></linearGradient><linearGradient id="roofGrad" x2="0" y2="1"><stop stop-color="#7ca8d5"/><stop offset="1" stop-color="#4e79b8"/></linearGradient></defs>
-     <rect width="860" height="375" fill="url(#skyGrad)"/>
-     <g fill="#fff" opacity=".65"><ellipse cx="125" cy="54" rx="60" ry="17"/><ellipse cx="166" cy="46" rx="36" ry="20"/><ellipse cx="580" cy="52" rx="66" ry="15"/></g>
-     <path d="M0 316H860V375H0Z" fill="#dbe9f0"/><path d="M0 328H860" stroke="#b9cedd" stroke-width="5"/>
-     <!-- A modest workshop always remains visible -->
-     <rect x="25" y="151" width="242" height="165" rx="4" fill="#fcfdff" stroke="#557eaa" stroke-width="5"/>
-     <path d="M10 153 L147 100 L279 153Z" fill="url(#roofGrad)" stroke="#4d73a5" stroke-width="5"/>
-     <rect x="40" y="176" width="78" height="61" rx="4" fill="#d1efff" stroke="#83b4d6" stroke-width="4"/>
-     <path d="M80 176V237M40 209H118" stroke="#83b4d6" stroke-width="3"/>
-     <rect x="139" y="229" width="106" height="11" rx="3" fill="#6e849c"/>
-     <rect x="146" y="240" width="10" height="63" fill="#657f9a"/><rect x="229" y="240" width="10" height="63" fill="#657f9a"/>
-     <rect x="165" y="209" width="27" height="20" fill="#86b4dc" stroke="#315e8d" stroke-width="3"/>
-     <circle cx="177" cy="219" r="7" fill="#daebfa" stroke="#51749d" stroke-width="3"/>
-     <rect x="105" y="263" width="44" height="48" rx="3" fill="#d9e8f5" stroke="#5582ac" stroke-width="3"/>
-     <text x="70" y="135" font-size="18" fill="#fff" font-weight="bold">WORKSHOP</text>
-     <g data-stage="50"><rect x="281" y="156" width="560" height="158" rx="4" fill="#e8f4ff" stroke="#5b89bc" stroke-width="5"/><path d="M273 156L330 118H800L848 156Z" fill="url(#roofGrad)" stroke="#426d9d" stroke-width="5"/><path d="M293 183H827" stroke="#b8d7ee" stroke-width="4"/><rect x="308" y="170" width="79" height="51" rx="3" fill="#c5eeff" stroke="#6c9dbf" stroke-width="3"/><path d="M347 170v51M308 194h79" stroke="#6c9dbf" stroke-width="2"/><path d="M472 171h32M659 171h29" stroke="#79add0" stroke-width="6"/><text x="397" y="144" font-size="17" font-weight="bold" fill="#fff">FACTORY BUILDING</text></g>
-     <g data-stage="10"><rect x="190" y="173" width="52" height="51" rx="5" fill="#cde1f9" stroke="#3069a7" stroke-width="4"/><path d="M198 189H233M200 202H234M201 215H232" stroke="#4d7caf" stroke-width="4"/><path d="M205 181l8 11 9-11" stroke="#ea984a" stroke-width="5"/><text x="187" y="169" font-size="13" fill="#22517e" font-weight="bold">工具</text></g>
-     <g data-stage="50"><rect x="296" y="272" width="190" height="31" rx="5" fill="#416b98"/><rect x="303" y="247" width="24" height="26" fill="#b8d5f3" stroke="#315a84" stroke-width="3"/><rect x="336" y="258" width="117" height="10" rx="4" fill="#93b9de"/><rect x="459" y="240" width="18" height="35" fill="#426c96"/><circle cx="320" cy="245" r="16" fill="#98c7f0" stroke="#235080" stroke-width="6"/><path d="M350 260l15-18h42l12 18" fill="none" stroke="#a4b9cc" stroke-width="5"/><text x="367" y="324" font-size="18" fill="#34516f" font-weight="bold">旋盤</text></g>
-     <g data-stage="100"><rect x="501" y="174" width="155" height="132" rx="7" fill="#b4d1ee" stroke="#3d71a8" stroke-width="5"/><rect x="517" y="188" width="101" height="77" rx="4" fill="#d8f4ff" stroke="#548aba" stroke-width="4"/><rect x="526" y="233" width="80" height="14" rx="3" fill="#8ba5c0"/><path d="M566 187V226M560 220h12" stroke="#426b9c" stroke-width="7"/><circle cx="636" cy="197" r="8" fill="#3aca93"/><rect x="620" y="223" width="26" height="48" rx="3" fill="#f4fafc" stroke="#9aadc4" stroke-width="2"/><text x="549" y="324" font-size="18" fill="#34516f" font-weight="bold">1号機</text></g>
-     <g data-stage="200"><rect x="300" y="328" width="365" height="17" rx="6" fill="#447eaf"/><g fill="#9dc4e9" stroke="#2b699c" stroke-width="2">${Array.from({length:12},(_,i)=>`<circle cx="${318+i*30}" cy="337" r="6"/>`).join('')}</g><rect x="366" y="301" width="45" height="27" fill="#e4a657" stroke="#ad763b" stroke-width="3"/><path d="M388 301V328" stroke="#bd864a" stroke-width="2"/><text x="318" y="366" font-size="15" fill="#34516f">搬送ライン</text></g>
-     <g data-stage="300"><rect x="692" y="165" width="135" height="141" rx="6" fill="#c8dced" stroke="#416b94" stroke-width="5"/><rect x="706" y="182" width="108" height="47" rx="3" fill="#235b88"/><g fill="#a9e9f7"><circle cx="723" cy="195" r="5"/><circle cx="743" cy="195" r="5"/><circle cx="763" cy="195" r="5"/></g><path d="M716 218l14-9 15 9 13-14 14 8 23-13" fill="none" stroke="#59d6b4" stroke-width="3"/><g fill="#9cb3c9"><rect x="712" y="245" width="92" height="11"/><rect x="712" y="263" width="92" height="11"/></g><text x="729" y="324" font-size="17" fill="#34516f" font-weight="bold">制御盤</text></g>
-     <g data-stage="500"><rect x="643" y="288" width="55" height="20" rx="5" fill="#284f7b"/><path d="M671 287l-9-50 37-27-16-42" fill="none" stroke="#f5a12d" stroke-width="16" stroke-linejoin="round"/><path d="M671 287l-9-50 37-27-16-42" fill="none" stroke="#c4741c" stroke-width="2"/><circle cx="662" cy="237" r="14" fill="#e5c065" stroke="#a86b14" stroke-width="4"/><circle cx="699" cy="210" r="11" fill="#edc375" stroke="#a86b14" stroke-width="4"/><path d="M684 168l-13-20m13 20l18-16" stroke="#335a84" stroke-width="7" stroke-linecap="round"/><text x="688" y="358" font-size="14" fill="#34516f">ロボット</text></g>
-     <g data-stage="1000"><path d="M319 148L375 115L438 148M439 148L498 114L543 146" fill="none" stroke="#409adc" stroke-width="3" stroke-dasharray="8 6"/><g fill="#1f70b7"><circle cx="319" cy="148" r="6"/><circle cx="375" cy="115" r="6"/><circle cx="438" cy="148" r="6"/><circle cx="498" cy="114" r="6"/><circle cx="543" cy="146" r="6"/></g><rect x="354" y="166" width="98" height="37" rx="8" fill="#d1f3ff" stroke="#3c84bf" stroke-width="3"/><text x="369" y="191" fill="#245e97" font-size="19" font-weight="bold">IoT • AI</text></g>
-     <g data-stage="2000"><path d="M760 75l-21 12v43l21 12 21-12V87Z" fill="#ddeeff" stroke="#4085bb" stroke-width="4"/><circle cx="760" cy="109" r="19" fill="none" stroke="#1d8bc0" stroke-width="3"/><path d="M740 109h40M760 91v37M748 94q25 18 0 31M772 94q-25 18 0 31" fill="none" stroke="#2e96ca" stroke-width="2"/><text x="671" y="66" font-size="17" font-weight="900" fill="#2069a3">WORLD CLASS</text><path d="M18 82l11 10-11 10-11-10ZM230 46l8 8-8 8-8-8ZM575 92l10 10-10 10-10-10Z" fill="#eabc45"/></g>
-     </svg>`
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 388" role="img" aria-label="正解数に応じて1台のマシニングセンタが組み上がる。ベッドからコラム、テーブル、主軸、ATC、CNC、パレットチェンジャ、5軸機構へ進化します">
+      <defs>
+        <linearGradient id="machineBg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e6f4ff"/><stop offset="1" stop-color="#f7fbff"/></linearGradient>
+        <linearGradient id="machineSteel" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#c8dceb"/><stop offset=".6" stop-color="#79a3c8"/><stop offset="1" stop-color="#446a96"/></linearGradient>
+        <linearGradient id="machineColumn" x1="0" x2="1"><stop stop-color="#1c4e83"/><stop offset=".6" stop-color="#4f8dbd"/><stop offset="1" stop-color="#173d68"/></linearGradient>
+        <linearGradient id="machineGlass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9f7ff" stop-opacity=".36"/><stop offset="1" stop-color="#5cb5ea" stop-opacity=".15"/></linearGradient>
+        <linearGradient id="machineGold" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#fff1a6"/><stop offset="1" stop-color="#e49a25"/></linearGradient>
+        <filter id="machineShadow"><feDropShadow dx="0" dy="7" stdDeviation="7" flood-color="#16395a" flood-opacity=".17"/></filter>
+        <pattern id="machineGrid" width="25" height="25" patternUnits="userSpaceOnUse"><path d="M25 0H0V25" fill="none" stroke="#9ec9e7" stroke-width=".65" opacity=".38"/></pattern>
+      </defs>
+      <rect width="860" height="388" fill="url(#machineBg)"/>
+      <rect width="860" height="388" fill="url(#machineGrid)"/>
+      <path d="M0 343H860V388H0Z" fill="#d4e5f1"/><path d="M0 344H860" stroke="#aec8dd" stroke-width="3"/>
+      <text x="30" y="38" fill="#2b689b" font-size="20" font-family="Arial, sans-serif" font-weight="900" letter-spacing="2">CNC MACHINE PROJECT</text>
+      <text x="30" y="61" fill="#6285a2" font-size="12" font-weight="bold">1問正解するたびに、最強の工作機械へ</text>
+      <path d="M28 73H829" stroke="#bad6e9" stroke-width="2"/>
+      <!-- BED / FOUNDATION: visible from level 1 -->
+      <g filter="url(#machineShadow)">
+        <path d="M146 304L198 287H689L724 310V342H146Z" fill="#41658a" stroke="#25496e" stroke-width="4"/>
+        <path d="M199 286H689L724 309H146Z" fill="#8db4d2" stroke="#31577e" stroke-width="3"/>
+        <rect x="167" y="317" width="533" height="19" rx="5" fill="#1f3e65"/>
+        <path d="M206 340v10M655 340v10" stroke="#335677" stroke-width="18"/>
+        <rect x="246" y="314" width="355" height="11" rx="5" fill="#b4d3e8" opacity=".62"/>
+        <g fill="#d7ebfa"><circle cx="202" cy="324" r="4"/><circle cx="673" cy="324" r="4"/></g>
+      </g>
+      <text x="157" y="374" font-size="15" font-weight="800" fill="#325a7b">高剛性ベッド</text>
+      <!-- COLUMN / GUIDEWAYS -->
+      <g data-stage="10">
+        <path d="M216 112H352L368 309H198Z" fill="url(#machineColumn)" stroke="#164170" stroke-width="5"/>
+        <path d="M232 129H339L352 277H216Z" fill="#6193ba" opacity=".58"/>
+        <path d="M260 123L248 291M314 123L331 292" fill="none" stroke="#d4e9f6" stroke-width="7"/>
+        <g stroke="#256393" stroke-width="3"><path d="M241 125L225 286M331 125L345 289"/></g>
+        <path d="M215 111L242 95H374L352 112Z" fill="#91b6d2" stroke="#164170" stroke-width="4"/>
+        <text x="251" y="88" font-size="17" font-weight="800" fill="#246192">Z軸コラム</text>
+      </g>
+      <!-- PRECISION TABLE AND LINEAR AXES -->
+      <g data-stage="50">
+        <rect x="326" y="290" width="283" height="14" rx="5" fill="#256395" stroke="#154776" stroke-width="3"/>
+        <rect x="351" y="274" width="239" height="18" rx="4" fill="#a2c1d8" stroke="#426e96" stroke-width="3"/>
+        <rect x="385" y="255" width="166" height="23" rx="3" fill="url(#machineSteel)" stroke="#285783" stroke-width="4"/>
+        <g stroke="#377aaa" stroke-width="3"><path d="M407 261v12M434 261v12M461 261v12M488 261v12M515 261v12M540 261v12"/></g>
+        <path d="M352 304H586" stroke="#6ab8da" stroke-width="3" stroke-dasharray="16 9"/>
+        <text x="419" y="245" font-size="15" font-weight="800" fill="#246192">精密XYテーブル</text>
+      </g>
+      <!-- HIGH-SPEED SPINDLE -->
+      <g data-stage="100">
+        <rect x="303" y="119" width="197" height="99" rx="11" fill="url(#machineSteel)" stroke="#2d5983" stroke-width="5"/>
+        <path d="M306 156H494" stroke="#d1e8f6" stroke-width="6" opacity=".7"/>
+        <rect x="392" y="200" width="45" height="31" rx="6" fill="#476b91" stroke="#244c79" stroke-width="4"/>
+        <path d="M399 229h31l-7 18h-16z" fill="#a1c4da" stroke="#245381" stroke-width="3"/>
+        <path d="M407 247l7 20 9-20" fill="#507ea6" stroke="#25517c" stroke-width="3"/>
+        <rect x="321" y="130" width="59" height="15" rx="4" fill="#2b72a4"/>
+        <text x="330" y="142" font-size="11" font-weight="900" fill="#f7ffff">SPINDLE</text>
+        <g data-stage="100"><circle cx="477" cy="138" r="9" fill="#40d3a5" stroke="#ecfbf7" stroke-width="3"/></g>
+      </g>
+      <!-- AUTOMATIC TOOL CHANGER -->
+      <g data-stage="200">
+        <path d="M503 154H553" stroke="#446f97" stroke-width="10"/>
+        <circle cx="613" cy="148" r="68" fill="#466f98" stroke="#244c76" stroke-width="6"/>
+        <circle cx="613" cy="148" r="54" fill="#bed9eb" stroke="#527ca2" stroke-width="5"/>
+        <circle cx="613" cy="148" r="31" fill="#477ca5" stroke="#2a557e" stroke-width="4"/>
+        <circle cx="613" cy="148" r="10" fill="#e6f3fb"/>
+        ${Array.from({length:8},(_,i)=>{const a=i*Math.PI/4;const x=613+43*Math.sin(a),y=148-43*Math.cos(a);return `<rect x="${x-8}" y="${y-12}" width="16" height="24" rx="4" fill="#e9b05d" stroke="#a47434" stroke-width="2" transform="rotate(${i*45} ${x} ${y})"/>`}).join('')}
+        <text x="575" y="237" font-size="16" font-weight="900" fill="#276393">ATC / 工具庫</text>
+      </g>
+      <!-- CNC CONTROLLER -->
+      <g data-stage="300">
+        <path d="M704 189l48 5" stroke="#3b6690" stroke-width="10"/>
+        <path d="M736 136l102 8-9 163-99-9Z" fill="#316595" stroke="#194979" stroke-width="5"/>
+        <path d="M749 154l73 6-4 78-74-5Z" fill="#122f55" stroke="#78aacb" stroke-width="3"/>
+        <path d="M761 189h49M763 203h46" stroke="#5bd9c1" stroke-width="3"/>
+        <text x="758" y="178" font-size="13" font-weight="bold" fill="#d9f3fe">CNC</text>
+        <g fill="#d7e7f3"><circle cx="765" cy="260" r="6"/><circle cx="786" cy="261" r="6"/><circle cx="807" cy="263" r="6"/></g>
+        <circle cx="786" cy="286" r="10" fill="#ecb159" stroke="#b47836" stroke-width="3"/>
+        <text x="738" y="330" font-size="14" font-weight="900" fill="#24557d">CNC制御</text>
+      </g>
+      <!-- PALLET CHANGER / PRODUCTION READY -->
+      <g data-stage="500">
+        <rect x="16" y="276" width="151" height="24" rx="5" fill="#4b7397" stroke="#24547e" stroke-width="4"/>
+        <rect x="45" y="249" width="111" height="31" rx="4" fill="#c1d5e8" stroke="#507b9c" stroke-width="4"/>
+        <path d="M62 256h76M62 269h76" stroke="#3c779b" stroke-width="3"/>
+        <rect x="63" y="217" width="77" height="33" rx="2" fill="#8fb2cc" stroke="#3a678d" stroke-width="3"/>
+        <g stroke="#255b87" stroke-width="5"><path d="M160 287L197 287"/><path d="M178 275l17 12-17 12" fill="none"/></g>
+        <rect x="44" y="304" width="12" height="27" fill="#385f85"/><rect x="134" y="304" width="12" height="27" fill="#385f85"/>
+        <text x="28" y="196" font-size="15" font-weight="900" fill="#2c5e85">パレット交換</text>
+      </g>
+      <!-- FIVE AXIS TRUNNION + AUTOMATIC PROBE -->
+      <g data-stage="1000">
+        <path d="M396 258v-26h17v12h77v-12h17v26" fill="none" stroke="#24578a" stroke-width="10" stroke-linejoin="round"/>
+        <ellipse cx="450" cy="240" rx="43" ry="12" fill="#87b4d7" stroke="#346f9d" stroke-width="4"/>
+        <path d="M410 225L492 213" stroke="#40a8d8" stroke-width="3" stroke-dasharray="6 4"/>
+        <circle cx="398" cy="237" r="10" fill="#eca941" stroke="#c07932" stroke-width="3"/>
+        <circle cx="504" cy="237" r="10" fill="#eca941" stroke="#c07932" stroke-width="3"/>
+        <path d="M522 111l-15-18-11 9" stroke="#348ec6" stroke-width="6" fill="none"/>
+        <path d="M525 112l-18 26" stroke="#30b4a6" stroke-width="4" stroke-dasharray="5 4"/>
+        <rect x="511" y="92" width="45" height="20" rx="4" fill="#a4d8ea" stroke="#3b82b3" stroke-width="3"/>
+        <text x="511" y="77" font-size="13" font-weight="800" fill="#24749e">5-AXIS / 高精度</text>
+        <path d="M186 99H704V313H187Z" fill="url(#machineGlass)" stroke="#5f9fcb" stroke-width="6" stroke-dasharray="16 7"/>
+        <rect x="551" y="251" width="89" height="18" rx="5" fill="#a3ebcb" stroke="#478b9e" stroke-width="3"/>
+        <text x="555" y="265" font-size="12" fill="#12517d" font-weight="900">±μm 精度</text>
+      </g>
+      <!-- FLAGSHIP MACHINE: 2000 correct answers -->
+      <g data-stage="2000">
+        <path d="M192 98H706" stroke="url(#machineGold)" stroke-width="11" stroke-linecap="round"/>
+        <path d="M193 317H698" stroke="#efc05e" stroke-width="7" stroke-linecap="round"/>
+        <rect x="340" y="13" width="325" height="51" rx="15" fill="#164c86" stroke="#e4b956" stroke-width="4"/>
+        <text x="502" y="45" fill="#fff1ab" text-anchor="middle" font-size="24" font-weight="900">ULTIMATE CNC  ★★★</text>
+        <g fill="#f3b43d"><path d="M145 91l6 14 15 6-15 6-6 14-6-14-15-6 15-6Z"/><path d="M757 78l5 11 13 5-13 5-5 11-5-11-13-5 13-5Z"/><path d="M715 35l4 9 10 4-10 4-4 9-4-9-10-4 10-4Z"/></g>
+        <text x="545" y="359" font-size="17" font-weight="900" fill="#a06d0f">最強マシニングセンタ 完成！</text>
+      </g>
+      </svg>`
   }
   function updateFactory(){const idx=stageIndex(),current=STAGES[idx],next=STAGES[idx+1];
     $c('factoryLevel').textContent='Lv.'+(idx+1);
