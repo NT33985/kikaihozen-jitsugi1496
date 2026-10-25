@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#140a9a">
+<title>マイクロメーター読み取り演習｜機械保全技能検定 実技</title>
+<style>
+:root{font-family:"Meiryo UI",Meiryo,"Hiragino Kaku Gothic ProN",Arial,sans-serif;color:#19263b;background:#f3f5fa}
+*{box-sizing:border-box}body{margin:0}button,a{font:inherit}button{cursor:pointer}button:disabled{cursor:default;opacity:.45}
+header{background:#140a9a;color:#fff;padding:14px max(14px,calc((100vw - 1080px)/2));display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-size:18px;font-weight:900}.small{font-size:12px;opacity:.8}a.back{border:1px solid #ffffff80;border-radius:9px;color:#fff;text-decoration:none;font-size:13px;padding:8px 12px;white-space:nowrap}
+main{max-width:1080px;padding:18px 16px 48px;margin:auto}.panel{background:#fff;border:1px solid #dce3f0;border-radius:16px;padding:18px;margin-bottom:14px;box-shadow:0 3px 18px #13275308}
+.intro{font-size:13px;color:#596881;line-height:1.8;margin:7px 0 0}h1{font-size:clamp(19px,3vw,27px);margin:0;color:#132963}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.grade{display:flex;gap:8px}
+.grade button{border:1px solid #bfcae3;background:#fff;color:#29365c;padding:10px 16px;border-radius:10px;font-weight:800}
+.grade button.active{background:#140a9a;color:#fff;border-color:#140a9a}
+.stats{font-size:13px;color:#50627c;font-weight:bold}.stats b{color:#140a9a;font-size:19px}
+.progress{margin-top:14px;height:9px;background:#e9eef8;border-radius:99px;overflow:hidden}.progress>div{height:100%;background:#140a9a;width:0;transition:width .2s}
+.prompt{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px;font-size:14px;font-weight:800}
+.badge{background:#e9eeff;color:#172894;border-radius:8px;padding:7px 10px;font-size:12px}
+.figure{border:1px solid #cbd7e2;background:#fff;border-radius:12px;padding:7px;overflow:hidden}
+canvas{width:100%;height:auto;display:block}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:15px}
+.choice{display:flex;align-items:center;gap:12px;min-height:68px;text-align:left;border:2px solid #d5deed;background:white;border-radius:12px;padding:13px;font-size:clamp(16px,2.8vw,22px);font-weight:800;color:#1b2c49}
+.choice .letter{background:#eff2ff;border-radius:8px;padding:7px 11px;color:#140a9a;font-size:16px}
+.choice:not(:disabled):hover{border-color:#637ed7;background:#f8faff}
+.choice.right{border-color:#2b9d63;background:#e8f8ef}.choice.wrong{border-color:#df6673;background:#fff0f1}
+.feedback{margin-top:14px;padding:14px;border-radius:12px;border:1px solid #a9dfb9;background:#edf9f0;font-size:14px;line-height:1.8}
+.feedback.bad{border-color:#f3bdc5;background:#fff2f3}.feedback strong{font-size:18px}
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:16px;flex-wrap:wrap}
+.nav button,.restart{border:1px solid #cbd4e6;background:#fff;color:#273967;padding:11px 16px;border-radius:10px;font-weight:800}
+.nav .primary,.restart{background:#140a9a;color:#fff;border-color:#140a9a}
+.hidden{display:none!important}
+.finish{text-align:center;padding:28px 10px}.finish h2{font-size:28px;color:#132963}.finish p{color:#52637c}
+.note{font-size:12px;color:#63718b;line-height:1.7;margin-top:12px}
+@media(max-width:550px){header{padding:10px 12px}.brand{font-size:14px}.small{font-size:10px}a.back{font-size:11px;padding:8px}
+main{padding:12px 10px 30px}.panel{padding:12px}.choice{min-height:61px;padding:10px;gap:6px;font-size:16px}.choice .letter{padding:5px 8px;font-size:13px}.choices{gap:8px}.feedback{padding:11px}.nav button{flex:1}}
+</style>
+</head>
+<body>
+<header><div><div class="brand">機械保全技能検定｜実技</div><div class="small">測定器読み取り演習</div></div><a class="back" href="./index.html">⌂ 実技ホームに戻る</a></header>
+<main>
+<section class="panel">
+ <div class="toolbar"><div><h1>マイクロメーター読み取り</h1><p class="intro">15～25mmの読み取り問題。目盛りを読んで4択から正解を選択してください。</p></div>
+ <div class="grade"><button type="button" id="g2">2級（20問）</button><button type="button" id="g1">1級（20問）</button></div></div>
+</section>
+<section class="panel" id="game">
+ <div class="toolbar"><div class="stats" id="counter">第1問 / 20問</div><div class="stats" id="score">この回の正解 <b>0</b> 問</div></div>
+ <div class="progress"><div id="bar"></div></div>
+ <div class="prompt" style="margin-top:20px"><span>次のマイクロメーターの読みはどれか。</span><span class="badge" id="difficulty">2級</span></div>
+ <div class="figure"><canvas id="micScale" width="1500" height="530" role="img" aria-label="マイクロメーターのスリーブ・シンブル目盛り"></canvas></div>
+ <div id="choices" class="choices" role="group" aria-label="4つの解答選択肢"></div>
+ <div class="feedback hidden" id="feedback" aria-live="polite"></div>
+ <div class="nav"><button type="button" id="prev">← 前の問題</button><button class="primary" type="button" id="next" disabled>次の問題 →</button></div>
+ <p class="note">本尺は0.5mm単位、シンブルは0.01mm単位で読み取ります。独自作成・選別済みの40問です。問題の数値は端末内のプログラムで一貫して描画されます。</p>
+</section>
+<section id="finished" class="panel finish hidden"><h2>20問終了！</h2><p id="summary"></p><button class="restart" id="restart" type="button">もう一度20問に挑戦</button></section>
+</main>
+<script>
+'use strict';
+const DATA={"2級":[[3,2042,2032,1992,2042,2142],[7,2221,2121,2211,2171,2221],[10,1866,1816,1866,1846,1856],[13,1937,1942,1937,1912,1927],[14,1592,1592,1602,1792,1542],[19,1765,1760,1755,1765,1965],[29,2330,2340,2320,2330,2303],[32,1971,1966,1771,1978,1971],[33,2372,2322,2372,2362,2377],[34,2281,2281,2231,2271,2291],[44,2489,2460,2494,2389,2489],[50,1732,1732,1632,1737,1742],[63,2418,2468,2423,2418,2413],[68,1839,2039,1839,1834,1810],[75,2286,2291,2296,2286,2266],[77,2172,2072,2172,2162,1972],[86,1886,1886,1876,1866,1836],[88,1916,1916,1921,1936,1906],[90,2448,2448,2348,2443,2468],[94,2027,2032,2022,2227,2027]],"1級":[[4,2075,2075,2085,2074,2080],[6,2289,2284,2288,2339,2289],[8,2333,2333,2353,2334,2331],[16,2197,2197,2196,2187,2202],[17,2422,2422,2421,2412,2427],[23,2115,2215,2115,2165,2114],[25,1746,1746,1745,1741,1703],[28,2441,2341,2442,2446,2441],[35,1568,1568,1566,1581,1563],[36,1944,1934,1744,1944,1942],[39,1871,1971,1921,1872,1871],[47,1636,1536,1613,1638,1636],[51,2340,2140,2340,2339,2350],[52,1948,1947,1898,1948,1938],[58,1872,1672,1862,1870,1872],[61,2449,2447,2499,2449,2459],[66,2149,2149,2147,2199,2049],[69,1973,1978,1963,1974,1973],[74,2139,2134,2149,2140,2139],[89,1993,1893,1993,1995,1983]]};
+const $=id=>document.getElementById(id);
+const fmt=n=>(n/100).toFixed(2)+' mm';
+let grade=(new URLSearchParams(location.search).get('grade')==='1'?'1級':'2級'),deck=[],position=0,selected={},score=0;
+function shuffle(list){for(let i=list.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[list[i],list[j]]=[list[j],list[i]];}return list;}
+function newRound(g){grade=g;deck=shuffle(DATA[grade].map(a=>a.slice()));position=0;selected={};score=0;history.replaceState(null,'','?grade='+(grade==='1級'?'1':'2'));$('game').classList.remove('hidden');$('finished').classList.add('hidden');$('g1').classList.toggle('active',grade==='1級');$('g2').classList.toggle('active',grade==='2級');$('difficulty').textContent=grade;render();}
+function drawScale(centi){
+ const canvas=$('micScale'),ctx=canvas.getContext('2d'),SW=1500,SH=530;
+ ctx.clearRect(0,0,SW,SH);ctx.fillStyle='#fff';ctx.fillRect(0,0,SW,SH);
+ const edge=914,ref=270,pitch=120,left=40,top=63,bottom=477;
+ const n=centi/100,th=centi%50,showN=n+(th===0?0.027:0);
+ const xFor=v=>edge-(showN-v)*pitch;
+ const grad=ctx.createLinearGradient(0,top,0,bottom);grad.addColorStop(0,'#d6f5dc');grad.addColorStop(.48,'#ecf8e9');grad.addColorStop(1,'#c8eccf');
+ ctx.fillStyle=grad;ctx.fillRect(left,top,edge-left,bottom-top);ctx.strokeStyle='#1e3029';ctx.lineWidth=3;ctx.strokeRect(left+1.5,top+1.5,edge-left-1.5,bottom-top-3);
+ for(let mm=0;mm<=25;mm++){const x=xFor(mm);if(x<left+8||x>edge-2)continue;const major=mm%5===0;ctx.beginPath();ctx.lineWidth=major?4.2:2.9;ctx.strokeStyle='#132920';ctx.moveTo(x,major?166:199);ctx.lineTo(x,ref);ctx.stroke();if(major){ctx.font='bold 49px Arial,sans-serif';ctx.textAlign=x>edge-40?'right':'center';ctx.textBaseline='alphabetic';ctx.fillStyle='#142820';ctx.fillText(String(mm),x>edge-40?edge-12:x,148);}}
+ for(let h=0;h<=49;h++){const x=xFor(h+.5);if(x<left+8||x>edge-2)continue;ctx.beginPath();ctx.lineWidth=3.1;ctx.strokeStyle='#142820';ctx.moveTo(x,ref+12);ctx.lineTo(x,373);ctx.stroke();}
+ ctx.beginPath();ctx.strokeStyle='#0d261a';ctx.lineWidth=3.3;ctx.moveTo(left,ref);ctx.lineTo(edge+14,ref);ctx.stroke();
+ const hg=ctx.createLinearGradient(edge,0,SW,0);hg.addColorStop(0,'#c0ebcc');hg.addColorStop(.26,'#e5f6e2');hg.addColorStop(1,'#d6f0d7');
+ ctx.beginPath();ctx.moveTo(edge,82);ctx.lineTo(edge+206,56);ctx.lineTo(SW-18,56);ctx.lineTo(SW-18,SH-54);ctx.lineTo(edge+206,SH-54);ctx.lineTo(edge,SH-80);ctx.closePath();ctx.fillStyle=hg;ctx.fill();ctx.strokeStyle='#1b3326';ctx.lineWidth=3;ctx.stroke();
+ const spacing=16;
+ for(let k=-12;k<=12;k++){const yy=ref+k*spacing,idx=(th+k+100)%50,isMajor=idx%5===0,atDatum=k===0;const end=isMajor?1326:(atDatum?1115:1016);ctx.beginPath();ctx.strokeStyle='#12291f';ctx.lineWidth=isMajor?3.8:(atDatum?3.4:2.6);ctx.moveTo(edge+9,yy);ctx.lineTo(end,yy);ctx.stroke();if(isMajor){ctx.fillStyle='#132b20';ctx.font='bold 46px Arial,sans-serif';ctx.textAlign='left';ctx.textBaseline='middle';ctx.fillText(idx===0?'0':String(idx),1350,yy+2);}}
+ ctx.beginPath();ctx.lineWidth=3.8;ctx.strokeStyle='#19352b';ctx.moveTo(edge,82);ctx.lineTo(edge,SH-80);ctx.stroke();
+}
+function render(){
+ if(position>=deck.length){$('game').classList.add('hidden');$('finished').classList.remove('hidden');$('summary').textContent=grade+'：'+score+' / '+deck.length+'問正解（正答率'+Math.round(100*score/deck.length)+'%）';return;}
+ const q=deck[position],n=q[1],saved=selected[position];
+ $('counter').textContent='第'+(position+1)+'問 / '+deck.length+'問';
+ $('score').innerHTML='この回の正解 <b>'+score+'</b> 問';
+ $('bar').style.width=(position/deck.length*100)+'%';
+ drawScale(n);
+ $('choices').replaceChildren();
+ for(let i=0;i<4;i++){const opt=q[i+2],btn=document.createElement('button');btn.type='button';btn.className='choice';const t=document.createElement('span');t.className='letter';t.textContent='ABCD'[i];const v=document.createElement('span');v.textContent=fmt(opt);btn.append(t,v);
+  if(saved!==undefined){btn.disabled=true;if(opt===n)btn.classList.add('right');else if(i===saved)btn.classList.add('wrong');}
+  btn.addEventListener('click',()=>answer(i));$('choices').append(btn);
+ }
+ $('prev').disabled=position===0;
+ $('next').disabled=saved===undefined;
+ $('next').textContent=position===deck.length-1?'結果を見る →':'次の問題 →';
+ const f=$('feedback');if(saved===undefined){f.classList.add('hidden');return;}
+ const right=q[saved+2]===n,main=Math.floor(n/50)*50;
+ f.className='feedback'+(right?'':' bad');
+ f.replaceChildren();const b=document.createElement('strong');b.textContent=right?'正解！':'不正解　正解は '+fmt(n);f.append(b);f.append(document.createElement('br'));
+ f.append(document.createTextNode('本尺 '+fmt(main)+' ＋ シンブル '+fmt(n-main)+' ＝ '+fmt(n)));
+}
+function answer(i){if(selected[position]!==undefined)return;selected[position]=i;const q=deck[position];if(q[i+2]===q[1])score++;render();}
+$('g1').addEventListener('click',()=>newRound('1級'));
+$('g2').addEventListener('click',()=>newRound('2級'));
+$('prev').addEventListener('click',()=>{if(position>0){position--;render();}});
+$('next').addEventListener('click',()=>{if(selected[position]===undefined)return;position++;render();});
+$('restart').addEventListener('click',()=>newRound(grade));
+newRound(grade);
+</script>
+</body></html>
