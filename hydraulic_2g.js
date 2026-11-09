@@ -25,7 +25,14 @@
     console.error('[油圧回路図] 既存実技アプリの初期化を確認できません');
     return;
   }
-  // 2級のみ追加。既存の分野・モード・進捗情報を上書きしない。
+  // 旧「油圧機器」は2級から外し、新「油圧回路図」に一本化する。1級は変更しない。
+  delete SETTINGS['2級'].hydraulic;
+  const legacyHydraulic=DB.categories.find(category=>category.id==='hydraulic');
+  if(legacyHydraulic) legacyHydraulic.levels=legacyHydraulic.levels.filter(level=>level!=='2級');
+  for(const item of DB.items){
+    if(item.category_id==='hydraulic') item.levels=item.levels.filter(level=>level!=='2級');
+  }
+  // 2級専用の新分野を追加。既存の1級設定・進捗情報は維持する。
   SETTINGS['2級'][CAT]={name:'油圧回路図',adopted:[...MODES,MODE_ALL],hold:[]};
   DB.categories.push({id:CAT,name:'油圧回路図',levels:['2級'],answer_modes:MODES});
   let loaded=false;
